@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Status</th>
+        <th>Adult?</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.status }}</td>
+        <td>
+        {% if user.age >= 18 %}
+            Yes
+        {% else %}
+            No
+        {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
