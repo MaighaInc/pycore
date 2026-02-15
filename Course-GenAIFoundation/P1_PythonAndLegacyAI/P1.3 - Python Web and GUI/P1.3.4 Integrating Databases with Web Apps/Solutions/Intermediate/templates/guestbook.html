@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guestbook (Intermediate)</title>
+</head>
+<body>
+    <h2>Sign Guestbook</h2>
+    <form method="post" action="/add">
+      Name: <input name="name" required> <br>
+      Message: <input name="message" required> <br>
+      <input type="submit" value="Sign">
+    </form>
+    <h2>All Entries</h2>
+    <ul>
+    {% for e in entries %}
+      <li><b>{{e[1]}}</b>: {{e[2]}} <a href="/edit/{{e[0]}}">Edit</a> <a href="/delete/{{e[0]}}">Delete</a></li>
+    {% endfor %}
+    </ul>
+    {% if edit_entry %}
+    <h2>Edit Entry</h2>
+    <form method="post" action="/edit/{{edit_entry[0]}}">
+      Name: <input name="name" value="{{edit_entry[1]}}" required> <br>
+      Message: <input name="message" value="{{edit_entry[2]}}" required> <br>
+      <input type="submit" value="Update">
+    </form>
+    {% endif %}
+</body>
+</html>

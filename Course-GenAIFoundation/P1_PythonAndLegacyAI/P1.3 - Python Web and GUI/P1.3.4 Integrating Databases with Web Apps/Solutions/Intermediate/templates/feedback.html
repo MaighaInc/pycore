@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Collector (Intermediate)</title>
+</head>
+<body>
+    <h2>Submit Feedback</h2>
+    <form method="post" action="/add">
+      <input name="message" required> <input type="submit" value="Send">
+    </form>
+    <form method="get" action="/">
+      <input name="filter" placeholder="Filter by keyword">
+      <input type="submit" value="Filter">
+    </form>
+    <h2>All Feedback</h2>
+    <ul>
+    {% for f in feedbacks %}
+      <li>{{f[1]}}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

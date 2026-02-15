@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Greeting Card History</title></head>
+<body>
+    <h2>Greeting Card History</h2>
+    {% if cards %}
+    <ul>
+    {% for card in cards %}
+        <li><strong>{{ card.name }}</strong>: {{ card.message }}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No cards created yet.</p>
+    {% endif %}
+    <a href="/greet">Create another card</a>
+</body>
+</html>

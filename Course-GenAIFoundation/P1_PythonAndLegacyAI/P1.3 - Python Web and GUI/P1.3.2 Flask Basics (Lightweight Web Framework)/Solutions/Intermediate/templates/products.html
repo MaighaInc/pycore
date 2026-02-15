@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Product Catalog</title></head>
+<body>
+    <h2>Product Catalog</h2>
+    <ul>
+    {% for product in products %}
+        <li><a href="{{ url_for('product_detail', product_id=product.id) }}">{{ product.name }}</a> - ${{ product.price }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

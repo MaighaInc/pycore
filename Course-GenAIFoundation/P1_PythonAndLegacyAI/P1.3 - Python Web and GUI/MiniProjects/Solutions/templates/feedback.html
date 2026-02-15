@@ -1,0 +1,48 @@
+<!doctype html>
+<title>Feedback Collector</title>
+<h2>Submit Feedback</h2>
+<form method="post">
+  Name: <input type="text" name="name" required><br>
+  Email: <input type="email" name="email" required><br>
+  Category:
+  <select name="category" required>
+    <option value="Bug">Bug</option>
+    <option value="Suggestion">Suggestion</option>
+    <option value="Compliment">Compliment</option>
+  </select><br>
+  Rating (optional):
+  <select name="rating">
+    <option value="">--</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+  Feedback: <textarea name="feedback" required></textarea><br>
+  <input type="submit" value="Submit">
+</form>
+
+<h2>All Feedback</h2>
+<form method="get">
+  Filter by category:
+  <select name="category" onchange="this.form.submit()">
+    <option value="">All</option>
+    {% for cat in categories %}
+      <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+    {% endfor %}
+  </select>
+</form>
+
+<table border="1">
+<tr><th>Name</th><th>Email</th><th>Category</th><th>Rating</th><th>Feedback</th></tr>
+{% for entry in feedbacks %}
+<tr>
+  <td>{{ entry['name'] }}</td>
+  <td>{{ entry['email'] }}</td>
+  <td>{{ entry['category'] }}</td>
+  <td>{{ entry['rating'] }}</td>
+  <td>{{ entry['feedback'] }}</td>
+</tr>
+{% endfor %}
+</table>

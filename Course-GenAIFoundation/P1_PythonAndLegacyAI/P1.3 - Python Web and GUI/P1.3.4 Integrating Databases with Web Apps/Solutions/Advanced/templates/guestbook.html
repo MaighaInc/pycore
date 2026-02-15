@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guestbook (Advanced)</title>
+</head>
+<body>
+    <h2>Sign Guestbook</h2>
+    <form method="post" action="/add">
+      Name: <input name="name" required> <br>
+      Message: <input name="message" required> <br>
+      <input type="submit" value="Sign">
+    </form>
+    <form method="get" action="/">
+      Keyword: <input name="keyword"> 
+      Date From: <input name="date_from" type="date"> 
+      Date To: <input name="date_to" type="date"> 
+      <input type="submit" value="Filter">
+    </form>
+    <form method="post" action="/batch_delete">
+    <h2>All Entries</h2>
+    <ul>
+    {% for g in guests %}
+      <li><input type="checkbox" name="ids" value="{{g[0]}}"> <b>{{g[1]}}</b>: {{g[2]}} ({{g[3]}})
+        <a href="/delete/{{g[0]}}">Delete</a>
+      </li>
+    {% endfor %}
+    </ul>
+    <input type="submit" value="Delete Selected">
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

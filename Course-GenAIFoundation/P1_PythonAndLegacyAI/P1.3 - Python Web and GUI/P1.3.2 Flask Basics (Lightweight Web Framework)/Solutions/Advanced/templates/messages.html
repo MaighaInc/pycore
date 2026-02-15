@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>All Messages</title></head>
+<body>
+    <h2>All Contact Messages</h2>
+    {% if messages %}
+    <ul>
+    {% for msg in messages %}
+        <li><strong>{{ msg.name }}</strong>: {{ msg.message }}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No messages yet.</p>
+    {% endif %}
+    <a href="/contact">Back to contact form</a>
+</body>
+</html>

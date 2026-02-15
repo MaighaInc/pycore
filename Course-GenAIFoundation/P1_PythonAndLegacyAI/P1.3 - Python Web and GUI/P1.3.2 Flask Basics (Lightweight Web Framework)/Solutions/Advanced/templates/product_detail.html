@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ product.name }}</title></head>
+<body>
+    <h2>{{ product.name }}</h2>
+    <p><strong>Price:</strong> ${{ product.price }}</p>
+    <p>{{ product.desc }}</p>
+    <a href="{{ url_for('product_list') }}">Back to products</a>
+</body>
+</html>

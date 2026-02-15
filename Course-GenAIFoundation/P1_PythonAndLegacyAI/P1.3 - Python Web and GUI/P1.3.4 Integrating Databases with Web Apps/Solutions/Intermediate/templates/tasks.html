@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Tracker (Intermediate)</title>
+</head>
+<body>
+    <h2>Add Task</h2>
+    <form method="post" action="/add">
+      Description: <input name="description" required> <br>
+      Due Date: <input name="due_date" type="date" required> <br>
+      <input type="submit" value="Add">
+    </form>
+    <form method="get" action="/">
+      <select name="filter">
+        <option value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="incomplete">Incomplete</option>
+      </select>
+      <input type="submit" value="Filter">
+    </form>
+    <h2>All Tasks</h2>
+    <ul>
+    {% for t in tasks %}
+      <li>{{t[1]}} (Due: {{t[2]}}) - {% if t[3] %}Completed{% else %}Incomplete{% endif %}
+        {% if not t[3] %}<a href="/complete/{{t[0]}}">Mark Completed</a>{% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

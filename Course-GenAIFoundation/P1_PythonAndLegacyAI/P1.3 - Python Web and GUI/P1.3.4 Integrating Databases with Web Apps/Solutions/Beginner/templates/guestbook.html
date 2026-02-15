@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guestbook</title>
+</head>
+<body>
+    <h2>Sign Guestbook</h2>
+    <form method="post">
+      Name: <input name="name" required> <br>
+      Message: <input name="message" required> <br>
+      <input type="submit" value="Sign">
+    </form>
+    <h2>All Entries</h2>
+    <ul>
+    {% for e in entries %}
+      <li><b>{{e[1]}}</b>: {{e[2]}}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

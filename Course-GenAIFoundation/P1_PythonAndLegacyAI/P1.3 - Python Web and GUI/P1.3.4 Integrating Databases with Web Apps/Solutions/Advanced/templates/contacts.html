@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Book (Advanced)</title>
+</head>
+<body>
+    <h2>Add Contact</h2>
+    <form method="post" action="/add">
+      Name: <input name="name" required> <br>
+      Email: <input name="email" required> <br>
+      Phone: <input name="phone" required> <br>
+      <input type="submit" value="Add">
+    </form>
+    <h2>Advanced Search</h2>
+    <form method="get" action="/">
+      Name: <input name="name"> Email: <input name="email"> Phone: <input name="phone">
+      <input type="submit" value="Search">
+    </form>
+    <h2>All Contacts</h2>
+    <ul>
+    {% for c in contacts %}
+      <li>{{c[1]}} ({{c[2]}}) [{{c[3]}}] <a href="/edit/{{c[0]}}">Edit</a> <a href="/delete/{{c[0]}}">Delete</a></li>
+    {% endfor %}
+    </ul>
+    {% if edit_contact %}
+    <h2>Edit Contact</h2>
+    <form method="post" action="/edit/{{edit_contact[0]}}">
+      Name: <input name="name" value="{{edit_contact[1]}}" required> <br>
+      Email: <input name="email" value="{{edit_contact[2]}}" required> <br>
+      Phone: <input name="phone" value="{{edit_contact[3]}}" required> <br>
+      <input type="submit" value="Update">
+    </form>
+    {% endif %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>
