@@ -11,13 +11,13 @@ def info():
 @app.route('/search')
 def search():
     query = request.args.get('q', 'default')
-    return f"You searched for: {query}"
+    return f"Method: {request.method}, You searched for: {query}"
 
 # Access headers
 @app.route('/headers')
 def show_headers():
     user_agent = request.headers.get('User-Agent')
-    return f"Your browser: {user_agent}"
+    return f"Method: {request.method}, Your browser: {user_agent}"
 
 if __name__ == '__main__':
     print("Starting Flask app for request handling...")
